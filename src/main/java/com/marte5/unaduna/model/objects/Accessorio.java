@@ -17,6 +17,7 @@ public class Accessorio {
 	private String categoria;
 	private String modello;
 	private int ordine;
+	private int ordineInterfaccia;
 	private boolean vincoloColore;
 	private String colore;
 	private boolean vincoloMetallo;
@@ -227,5 +228,18 @@ public class Accessorio {
 	 */
 	public void setNomeBorchia(String nomeBorchia) {
 		this.nomeBorchia = nomeBorchia;
+	}
+	/**
+	 * @return the ordineInterfaccia
+	 */
+	@DynamoDBAttribute(attributeName="ordineInterfaccia")
+	public int getOrdineInterfaccia() {
+		return ordineInterfaccia;
+	}
+	/**
+	 * @param ordineInterfaccia the ordineInterfaccia to set
+	 */
+	public void setOrdineInterfaccia(int ordineInterfaccia) {
+		this.ordineInterfaccia = ordineInterfaccia;
 	}
 }
