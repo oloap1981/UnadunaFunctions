@@ -27,29 +27,29 @@ public class UnaDunaGet implements RequestHandler<RichiestaGetGenerica, Risposta
 	
     @Override
     public RispostaGetGenerica handleRequest(RichiestaGetGenerica input, Context context) {
-    	String className = this.getClass().getName();
+    	    String className = this.getClass().getName();
+        context.getLogger().log("Input: " + input);
         RispostaGetGenerica risposta = new RispostaGetGenerica();
 
         String functionName = input.getFunctionName();
         Esito esito = FunzioniUtils.getEsitoPositivo(className);
         
         if(!isFunctionNameValid(functionName)) {
-        	esito.setCodice(EsitoHelper.ESITO_KO_CODICE_ERRORE_GET);
+        		esito.setCodice(EsitoHelper.ESITO_KO_CODICE_ERRORE_GET);
 			esito.setMessage(EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_GET + " la funzione richiesta non esiste ");
 			risposta.setEsito(esito);
 			return risposta;
         }
+        
         try {
 			@SuppressWarnings("unchecked")
 			RequestHandler<RichiestaGetGenerica, RispostaGetGenerica> handler = (RequestHandler<RichiestaGetGenerica, RispostaGetGenerica>) Class.forName(PACKAGE_NAME_GET + functionName).newInstance();
-
 			risposta = handler.handleRequest(input, context);
 			
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			esito.setCodice(EsitoHelper.ESITO_KO_CODICE_ERRORE_GET);
 			esito.setMessage(EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_GET + " get generica ");
 			esito.setTrace(e.getMessage());
-			context.getLogger().log(e.getMessage());
 			risposta.setEsito(esito);
 			return risposta;
 		}

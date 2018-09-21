@@ -32,7 +32,6 @@ public class UnaDunaGetModelli implements RequestHandler<RichiestaGetGenerica, R
     			esito.setCodice(EsitoHelper.ESITO_KO_CODICE_ERRORE_GET);
     			esito.setMessage(className + " - " + EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_GET);
     			esito.setTrace(e1.getMessage());
-    			System.out.println(e1.getMessage() + e1.getStackTrace());
     			risposta.setEsito(esito);
     			return risposta;
     		}
@@ -46,7 +45,6 @@ public class UnaDunaGetModelli implements RequestHandler<RichiestaGetGenerica, R
     				esito.setCodice(EsitoHelper.ESITO_KO_CODICE_ERRORE_GET);
     				esito.setMessage(className + " - " + EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_GET);
     				esito.setTrace(e.getMessage());
-    				System.out.println(e.getMessage() + e.getStackTrace());
     				risposta.setEsito(esito);
     				return risposta;
     			}
