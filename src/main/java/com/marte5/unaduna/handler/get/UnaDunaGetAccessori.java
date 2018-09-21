@@ -50,7 +50,7 @@ public class UnaDunaGetAccessori implements RequestHandler<RichiestaGetGenerica,
     				expr = new DynamoDBScanExpression();
     			} else {
     				Map<String, AttributeValue> eav = new HashMap<String, AttributeValue>();
-    		        eav.put(":val1", new AttributeValue().withN(codiceModello));
+    		        eav.put(":val1", new AttributeValue().withS(codiceModello));
     				expr = new DynamoDBScanExpression().withFilterExpression("modello = :val1").withExpressionAttributeValues(eav);	
     			}
 

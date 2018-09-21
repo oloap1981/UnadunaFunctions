@@ -18,6 +18,7 @@ public class Modello {
 	private long prezzo;
 	private List<String> accessori;
 	private int ordine;
+	private int ordineInterfaccia;
 
 	/**
 	 * @return the codice
@@ -135,5 +136,18 @@ public class Modello {
 	 */
 	public void setOrdine(int ordine) {
 		this.ordine = ordine;
+	}
+	/**
+	 * @return the ordineInterfaccia
+	 */
+	@DynamoDBAttribute(attributeName="ordineInterfaccia")
+	public int getOrdineInterfaccia() {
+		return ordineInterfaccia;
+	}
+	/**
+	 * @param ordineInterfaccia the ordineInterfaccia to set
+	 */
+	public void setOrdineInterfaccia(int ordineInterfaccia) {
+		this.ordineInterfaccia = ordineInterfaccia;
 	}
 }
