@@ -40,7 +40,7 @@ public class UnaDunaGetConfigurazioniUtente implements RequestHandler<RichiestaG
     			client = AmazonDynamoDBClientBuilder.standard().build();
     		} catch (Exception e1) {
     			esito.setCodice(EsitoHelper.ESITO_KO_CODICE_ERRORE_GET);
-    			esito.setMessage(className + " - " + EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_GET + " getAziende ");
+    			esito.setMessage(className + " - " + EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_GET + " getConfigurazioni ");
     			esito.setTrace(e1.getMessage());
     			risposta.setEsito(esito);
     			return risposta;
@@ -60,7 +60,7 @@ public class UnaDunaGetConfigurazioniUtente implements RequestHandler<RichiestaG
     			}
     			
     			for (Configurazione configurazione : configurazioni) {
-				if(configurazione.getUtente().getCodice().equals(codiceUtente)) {
+				if(configurazione.getUtente().equals(codiceUtente)) {
 					configurazioniFiltrate.add(configurazione);
 				}
 			}

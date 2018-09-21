@@ -10,20 +10,22 @@ import com.marte5.unaduna.utility.EsitoHelper;
 import com.marte5.unaduna.utility.FunzioniUtils;
 
 import requests.RichiestaGetGenerica;
+import requests.RichiestaPutGenerica;
 import responses.RispostaGetGenerica;
+import responses.RispostaPutGenerica;
 
-public class UnaDunaPut implements RequestHandler<RichiestaGetGenerica, RispostaGetGenerica> {
+public class UnaDunaPut implements RequestHandler<RichiestaPutGenerica, RispostaPutGenerica> {
 
 	private final static String FUNCTION_NAME_PUT_CONFIGURAZIONE = "UnaDunaPutConfigurazione";
-	private final static String FUNCTION_NAME_PUT_ORDINE = "UnaDunaPutORDINE";
-	
-	private static final String PACKAGE_NAME_GET = "com.marte5.unaduna.handler.";
+	private final static String FUNCTION_NAME_PUT_ORDINE = "UnaDunaPutOrdine";
+	private final static String FUNCTION_NAME_PUT_UTENTE = "UnaDunaPutUtente";
+	private static final String PACKAGE_NAME_PUT = "com.marte5.unaduna.handler.put.";
 	
     @Override
-    public RispostaGetGenerica handleRequest(RichiestaGetGenerica input, Context context) {
+    public RispostaPutGenerica handleRequest(RichiestaPutGenerica input, Context context) {
     	    String className = this.getClass().getName();
         context.getLogger().log("Input: " + input);
-        RispostaGetGenerica risposta = new RispostaGetGenerica();
+        RispostaPutGenerica risposta = new RispostaPutGenerica();
 
         String functionName = input.getFunctionName();
         Esito esito = FunzioniUtils.getEsitoPositivo(className);
@@ -37,7 +39,7 @@ public class UnaDunaPut implements RequestHandler<RichiestaGetGenerica, Risposta
         
         try {
 			@SuppressWarnings("unchecked")
-			RequestHandler<RichiestaGetGenerica, RispostaGetGenerica> handler = (RequestHandler<RichiestaGetGenerica, RispostaGetGenerica>) Class.forName(PACKAGE_NAME_GET + functionName).newInstance();
+			RequestHandler<RichiestaPutGenerica, RispostaPutGenerica> handler = (RequestHandler<RichiestaPutGenerica, RispostaPutGenerica>) Class.forName(PACKAGE_NAME_PUT + functionName).newInstance();
 			risposta = handler.handleRequest(input, context);
 			
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
@@ -56,7 +58,7 @@ public class UnaDunaPut implements RequestHandler<RichiestaGetGenerica, Risposta
     		
     		funzioni.add(FUNCTION_NAME_PUT_CONFIGURAZIONE);
     		funzioni.add(FUNCTION_NAME_PUT_ORDINE);
-    		
+    		funzioni.add(FUNCTION_NAME_PUT_UTENTE);
     		return funzioni.contains(nomeFunzione);
     }
 }

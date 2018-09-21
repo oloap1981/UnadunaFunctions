@@ -7,26 +7,27 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 @DynamoDBTable(tableName="UNADUNA_Utenti")
 public class Utente {
 
-	private String codice;
+	private String email;
 	private String nome;
 	private String cognome; 
+	private String username;
 	private String telefono;
 	private String indirizzo;
 	private String codiceFiscale;
 	
 	
 	/**
-	 * @return the codice
+	 * @return the email
 	 */
-	@DynamoDBHashKey(attributeName="codice")
-	public String getCodice() {
-		return codice;
+	@DynamoDBHashKey(attributeName="email")
+	public String getEmail() {
+		return email;
 	}
 	/**
-	 * @param codice the codice to set
+	 * @param email the email to set
 	 */
-	public void setCodice(String codice) {
-		this.codice = codice;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	/**
 	 * @return the nome
@@ -41,6 +42,21 @@ public class Utente {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	/**
+	 * @return the username
+	 */
+	@DynamoDBAttribute(attributeName="username")
+	public String getUsername() {
+		return username;
+	}
+	/**
+	 * @param username the username to set
+	 */
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
 	/**
 	 * @return the cognome
 	 */

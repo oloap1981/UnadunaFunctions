@@ -23,7 +23,7 @@ public class UnaDunaGet implements RequestHandler<RichiestaGetGenerica, Risposta
 	private final static String FUNCTION_NAME_GET_ORDINI = "UnaDunaGetOrdini";
 	private final static String FUNCTION_NAME_GET_ORDINI_UTENTE = "UnaDunaGetOrdiniUtente";
 	
-	private static final String PACKAGE_NAME_GET = "com.marte5.unaduna.handler.";
+	private static final String PACKAGE_NAME_GET = "com.marte5.unaduna.handler.get.";
 	
     @Override
     public RispostaGetGenerica handleRequest(RichiestaGetGenerica input, Context context) {

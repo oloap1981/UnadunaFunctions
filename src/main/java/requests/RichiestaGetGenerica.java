@@ -12,6 +12,7 @@ public class RichiestaGetGenerica {
 	private String codiceOrdine;
 	
 	private String codiceUtente;
+	private String emailUtente;
 	
 	/**
 	 * @return the functionName
@@ -48,6 +49,18 @@ public class RichiestaGetGenerica {
 	 */
 	public void setCodiceUtente(String codiceUtente) {
 		this.codiceUtente = codiceUtente;
+	}
+	/**
+	 * @return the emailUtente
+	 */
+	public String getEmailUtente() {
+		return emailUtente;
+	}
+	/**
+	 * @param emailUtente the emailUtente to set
+	 */
+	public void setEmailUtente(String emailUtente) {
+		this.emailUtente = emailUtente;
 	}
 	/**
 	 * @return the requestTypeModelli

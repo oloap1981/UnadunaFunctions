@@ -3,6 +3,7 @@ package com.marte5.unaduna.model.objects;
 import java.util.List;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
@@ -13,7 +14,7 @@ public class Configurazione {
 	private String nome;
 	private String dedica;
 	private List<Entita> elencoEntita;
-	private Utente utente;
+	private UtenteConfigurazione utente;
 	
 	/**
 	 * @return the codice
@@ -86,7 +87,7 @@ public class Configurazione {
 	 * @return the utente
 	 */
 	@DynamoDBHashKey(attributeName="utente")
-	public Utente getUtente() {
+	public UtenteConfigurazione getUtente() {
 		return utente;
 	}
 
@@ -94,12 +95,12 @@ public class Configurazione {
 	/**
 	 * @param codice the utente to set
 	 */
-	public void setUtente(Utente utente) {
+	public void setUtente(UtenteConfigurazione utente) {
 		this.utente = utente;
 	}
 	
-	
-	class Entita {
+	@DynamoDBDocument
+	public static class Entita {
 		
 		private String codice;
 		private String nome; 
@@ -200,6 +201,27 @@ public class Configurazione {
 			this.tipoEntita = tipoEntita;
 		}
 	}
+
+	@DynamoDBDocument
+	public static class UtenteConfigurazione {
+			
+			private String email;
+			
+			/**
+			 * @return the email
+			 */
+			@DynamoDBAttribute(attributeName="email")
+			public String getEmail() {
+				return email;
+			}
+			/**
+			 * @param email the email to set
+			 */
+			public void setEmail(String email) {
+				this.email = email;
+			}
+			
+		}
 
 
 }

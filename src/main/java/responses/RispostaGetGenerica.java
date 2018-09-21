@@ -7,6 +7,7 @@ import com.marte5.unaduna.model.objects.Configurazione;
 import com.marte5.unaduna.model.objects.Esito;
 import com.marte5.unaduna.model.objects.Modello;
 import com.marte5.unaduna.model.objects.Ordine;
+import com.marte5.unaduna.model.objects.Utente;
 
 public class RispostaGetGenerica {
 	
@@ -17,6 +18,7 @@ public class RispostaGetGenerica {
 	private List<Ordine> ordini;
 	private Configurazione configurazione;
 	private Ordine ordine;
+	private Utente utente;
 	
 	/**
 	 * @return the esito
@@ -29,6 +31,18 @@ public class RispostaGetGenerica {
 	 */
 	public void setEsito(Esito esito) {
 		this.esito = esito;
+	}
+	/**
+	 * @return the utente
+	 */
+	public Utente getUtente() {
+		return utente;
+	}
+	/**
+	 * @param utente the utente to set
+	 */
+	public void setUtente(Utente utente) {
+		this.utente = utente;
 	}
 	/**
 	 * @return the modelli

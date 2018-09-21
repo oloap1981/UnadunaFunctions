@@ -8,28 +8,30 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.marte5.unaduna.model.objects.Configurazione;
+
 import com.marte5.unaduna.model.objects.Esito;
+
+import com.marte5.unaduna.model.objects.Utente;
 import com.marte5.unaduna.utility.EsitoHelper;
 import com.marte5.unaduna.utility.FunzioniUtils;
 
 import requests.RichiestaGetGenerica;
 import responses.RispostaGetGenerica;
 
-public class UnaDunaGetConfigurazioni implements RequestHandler<RichiestaGetGenerica, RispostaGetGenerica> {
-
-    @Override
+public class UnaDunaGetUtente implements RequestHandler<RichiestaGetGenerica, RispostaGetGenerica>{
+	
+	@Override
     public RispostaGetGenerica handleRequest(RichiestaGetGenerica request, Context context) {
     		String className = this.getClass().getName();
     		RispostaGetGenerica risposta = new RispostaGetGenerica();
     		Esito esito = FunzioniUtils.getEsitoPositivo(className);
-    		
+    		String email = request.getEmailUtente();
     		AmazonDynamoDB client = null;
     		try {
     			client = AmazonDynamoDBClientBuilder.standard().build();
     		} catch (Exception e1) {
     			esito.setCodice(EsitoHelper.ESITO_KO_CODICE_ERRORE_GET);
-    			esito.setMessage(className + " - " + EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_GET + " getConfigurazioni ");
+    			esito.setMessage(className + " - " + EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_GET + " getAziende ");
     			esito.setTrace(e1.getMessage());
     			risposta.setEsito(esito);
     			return risposta;
@@ -37,17 +39,17 @@ public class UnaDunaGetConfigurazioni implements RequestHandler<RichiestaGetGene
     		if(client != null) {
     			DynamoDBMapper mapper = new DynamoDBMapper(client);
     			DynamoDBScanExpression expr = new DynamoDBScanExpression();
-    			List<Configurazione> configurazioni;
+    			Utente utente;
     			try {
-    				configurazioni = mapper.scan(Configurazione.class, expr);
+    				utente = mapper.load(Utente.class, email);
     			} catch (Exception e) {
     				esito.setCodice(EsitoHelper.ESITO_KO_CODICE_ERRORE_GET);
-    				esito.setMessage(className + " - " + EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_GET + " getConfigurazioni");
+    				esito.setMessage(className + " - " + EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_GET + " getAziende ");
     				esito.setTrace(e.getMessage());
     				risposta.setEsito(esito);
     				return risposta;
     			}
-    			risposta.setConfigurazioni(configurazioni);
+    			risposta.setUtente(utente);
     		}	
     		
     		risposta.setEsito(esito);

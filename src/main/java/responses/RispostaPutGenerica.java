@@ -7,6 +7,7 @@ public class RispostaPutGenerica {
 	private Esito esito;
 	private String codiceConfigurazioneRisposta;
 	private String codiceOrdineRisposta;
+	private String codiceUtenteRisposta;
 	
 	/**
 	 * @return the esito
@@ -43,6 +44,18 @@ public class RispostaPutGenerica {
 	 */
 	public void setCodiceConfigurazioneRisposta(String codiceConfigurazioneRisposta) {
 		this.codiceConfigurazioneRisposta = codiceConfigurazioneRisposta;
+	}
+	/**
+	 * @return the codiceUtenteRisposta
+	 */
+	public String getCodiceUtenteRisposta() {
+		return codiceUtenteRisposta;
+	}
+	/**
+	 * @param codiceUtenteRisposta the codiceUtenteRisposta to set
+	 */
+	public void setCodiceUtenteRisposta(String codiceUtenteRisposta) {
+		this.codiceUtenteRisposta = codiceUtenteRisposta;
 	}
 	
 }

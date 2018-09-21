@@ -60,7 +60,7 @@ public class UnaDunaGetOrdiniUtente implements RequestHandler<RichiestaGetGeneri
     			}
     			
     			for (Ordine ordine : ordini) {
-				if(ordine.getUtente().getCodice().equals(codiceUtente)) {
+				if(ordine.getUtente().getEmail().equals(codiceUtente)) {
 					ordiniFiltrati.add(ordine);
 				}
 			}
