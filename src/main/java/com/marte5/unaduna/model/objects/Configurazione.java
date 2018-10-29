@@ -86,7 +86,7 @@ public class Configurazione {
 	/**
 	 * @return the utente
 	 */
-	@DynamoDBHashKey(attributeName="utente")
+	@DynamoDBAttribute(attributeName="utente")
 	public UtenteConfigurazione getUtente() {
 		return utente;
 	}

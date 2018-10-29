@@ -35,7 +35,7 @@ public class UnaDunaGetConfigurazione implements RequestHandler<RichiestaGetGene
     			client = AmazonDynamoDBClientBuilder.standard().build();
     		} catch (Exception e1) {
     			esito.setCodice(EsitoHelper.ESITO_KO_CODICE_ERRORE_GET);
-    			esito.setMessage(className + " - " + EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_GET + " getAziende ");
+    			esito.setMessage(className + " - " + EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_GET + " getConfigurazioni ");
     			esito.setTrace(e1.getMessage());
     			risposta.setEsito(esito);
     			return risposta;
@@ -47,7 +47,7 @@ public class UnaDunaGetConfigurazione implements RequestHandler<RichiestaGetGene
     				configurazione = mapper.load(Configurazione.class, codiceConfigurazione);
     			} catch (Exception e) {
     				esito.setCodice(EsitoHelper.ESITO_KO_CODICE_ERRORE_GET);
-    				esito.setMessage(className + " - " + EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_GET + " getAziende ");
+    				esito.setMessage(className + " - " + EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_GET + " getConfigurazioni");
     				esito.setTrace(e.getMessage());
     				risposta.setEsito(esito);
     				return risposta;

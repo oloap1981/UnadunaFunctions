@@ -8,13 +8,14 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.marte5.unaduna.model.objects.Configurazione;
 import com.marte5.unaduna.model.objects.Esito;
+import com.marte5.unaduna.model.objects.Ordine;
 import com.marte5.unaduna.utility.EsitoHelper;
 import com.marte5.unaduna.utility.FunzioniUtils;
 
 import requests.RichiestaPutGenerica;
 import responses.RispostaPutGenerica;
 
-public class UnaDunaPutConfigurazione implements RequestHandler<RichiestaPutGenerica, RispostaPutGenerica> {
+public class UnaDunaPutOrdine implements RequestHandler<RichiestaPutGenerica, RispostaPutGenerica> {
 
 
     @Override
@@ -23,40 +24,40 @@ public class UnaDunaPutConfigurazione implements RequestHandler<RichiestaPutGene
     		RispostaPutGenerica risposta = new RispostaPutGenerica();
     		Esito esito = FunzioniUtils.getEsitoPositivo(className);
     		
-    		String codiceConfigurazioneRisposta = "";
+    		String codiceOrdineRisposta = "";
     		
     		AmazonDynamoDB client = null;
     		try {
     			client = AmazonDynamoDBClientBuilder.standard().withRegion(Regions.EU_CENTRAL_1).build();
     		} catch (Exception e1) {
     			esito.setCodice(EsitoHelper.ESITO_KO_CODICE_ERRORE_SALVATAGGIO);
-    			esito.setMessage(EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_PROCEDURA_LAMBDA + " putConfigurazione ");
+    			esito.setMessage(EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_PROCEDURA_LAMBDA + " putOrdine ");
     			esito.setTrace(e1.getMessage());
     			risposta.setEsito(esito);
     			return risposta;
     		}
     		if(client != null) {
     			DynamoDBMapper mapper = new DynamoDBMapper(client);
-
-    			Configurazione configurazione = request.getConfigurazione();
-    			String codiceConfigurazione = configurazione.getCodice();
-    			if(codiceConfigurazione == null || codiceConfigurazione.equals("")) {
+    			Ordine ordine = request.getOrdine();
+    			
+    			String codiceOrdine = ordine.getCodice();
+    			if(codiceOrdine == null || codiceOrdine.equals("")) {
         			//insert
-    				codiceConfigurazione = FunzioniUtils.getEntitaId();
+    				codiceOrdine = FunzioniUtils.getEntitaId();
 	        } 
-    			codiceConfigurazioneRisposta = codiceConfigurazione;
-	        	configurazione.setCodice(codiceConfigurazione);
+    			codiceOrdineRisposta = codiceOrdine;
+	        	ordine.setCodice(codiceOrdine);
     			
     			try {
-    				mapper.save(configurazione);
+    				mapper.save(ordine);
     			} catch (Exception e) {
     				esito.setCodice(EsitoHelper.ESITO_KO_CODICE_ERRORE_GET);
-    				esito.setMessage(className + " - " + EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_GET + " getAziende ");
+    				esito.setMessage(className + " - " + EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_GET + " putOrdine ");
     				esito.setTrace(e.getMessage());
     				risposta.setEsito(esito);
     				return risposta;
     			}
-    			risposta.setCodiceConfigurazioneRisposta(codiceConfigurazioneRisposta);
+    			risposta.setCodiceConfigurazioneRisposta(codiceOrdineRisposta);
     		}	
     		risposta.setEsito(esito);
     		return risposta;

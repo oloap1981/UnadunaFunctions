@@ -9,6 +9,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
+import com.marte5.unaduna.model.objects.Configurazione;
 import com.marte5.unaduna.model.objects.Esito;
 import com.marte5.unaduna.model.objects.Ordine;
 import com.marte5.unaduna.utility.EsitoHelper;
@@ -61,6 +62,19 @@ public class UnaDunaGetOrdiniUtente implements RequestHandler<RichiestaGetGeneri
     			
     			for (Ordine ordine : ordini) {
 				if(ordine.getUtente().getEmail().equals(codiceUtente)) {
+					String codiceConfigurazione = ordine.getConfigurazioneOrdine().getCodice();
+					Configurazione configurazione;
+	    			try {
+	    				configurazione = mapper.load(Configurazione.class, codiceConfigurazione);
+	    			} catch (Exception e) {
+	    				esito.setCodice(EsitoHelper.ESITO_KO_CODICE_ERRORE_GET);
+	    				esito.setMessage(className + " - " + EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_GET + " getAziende ");
+	    				esito.setTrace(e.getMessage());
+	    				risposta.setEsito(esito);
+	    				return risposta;
+	    			}
+	    			ordine.setConfigurazione(configurazione);
+	    			
 					ordiniFiltrati.add(ordine);
 				}
 			}

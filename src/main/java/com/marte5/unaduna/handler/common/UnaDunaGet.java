@@ -35,7 +35,7 @@ public class UnaDunaGet implements RequestHandler<RichiestaGetGenerica, Risposta
         Esito esito = FunzioniUtils.getEsitoPositivo(className);
         
         if(!isFunctionNameValid(functionName)) {
-        		esito.setCodice(EsitoHelper.ESITO_KO_CODICE_ERRORE_GET);
+        	esito.setCodice(EsitoHelper.ESITO_KO_CODICE_ERRORE_GET);
 			esito.setMessage(EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_GET + " la funzione richiesta non esiste ");
 			risposta.setEsito(esito);
 			return risposta;

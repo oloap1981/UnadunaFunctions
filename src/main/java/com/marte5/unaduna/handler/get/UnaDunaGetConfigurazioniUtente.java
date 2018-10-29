@@ -60,7 +60,7 @@ public class UnaDunaGetConfigurazioniUtente implements RequestHandler<RichiestaG
     			}
     			
     			for (Configurazione configurazione : configurazioni) {
-				if(configurazione.getUtente().equals(codiceUtente)) {
+				if(configurazione.getUtente().getEmail().equals(codiceUtente)) {
 					configurazioniFiltrate.add(configurazione);
 				}
 			}

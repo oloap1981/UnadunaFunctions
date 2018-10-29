@@ -1,7 +1,9 @@
 package com.marte5.unaduna.model.objects;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIgnore;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
 @DynamoDBTable(tableName="UNADUNA_Ordini")
@@ -16,8 +18,9 @@ public class Ordine {
 	private String codice; 
 	private int stato;
 	private boolean pagato;
-	private Utente utente;
-	private Configurazione configurazione;
+	private UtenteOrdine utente;
+	private ConfigurazioneOrdine configurazioneOrdine;
+	private Configurazione configurazione; 
 	
 	/**
 	 * @return the codice
@@ -62,19 +65,30 @@ public class Ordine {
 	 * @return the utente
 	 */
 	@DynamoDBAttribute(attributeName="utente")
-	public Utente getUtente() {
+	public UtenteOrdine getUtente() {
 		return utente;
 	}
 	/**
 	 * @param utente the utente to set
 	 */
-	public void setUtente(Utente utente) {
+	public void setUtente(UtenteOrdine utente) {
 		this.utente = utente;
 	}
 	/**
 	 * @return the configurazione
 	 */
 	@DynamoDBAttribute(attributeName="configurazione")
+	public ConfigurazioneOrdine getConfigurazioneOrdine() {
+		return configurazioneOrdine;
+	}
+	/**
+	 * @param configurazione the configurazione to set
+	 */
+	public void setConfigurazioneOrdine(ConfigurazioneOrdine configurazioneOrdine) {
+		this.configurazioneOrdine = configurazioneOrdine;
+	}
+	
+	@DynamoDBIgnore
 	public Configurazione getConfigurazione() {
 		return configurazione;
 	}
@@ -85,4 +99,46 @@ public class Ordine {
 		this.configurazione = configurazione;
 	}
 	
+	
+	@DynamoDBDocument
+	public static class UtenteOrdine {
+			
+			private String email;
+			
+			/**
+			 * @return the email
+			 */
+			@DynamoDBAttribute(attributeName="email")
+			public String getEmail() {
+				return email;
+			}
+			/**
+			 * @param email the email to set
+			 */
+			public void setEmail(String email) {
+				this.email = email;
+			}
+			
+		}
+	
+	@DynamoDBDocument
+	public static class ConfigurazioneOrdine {
+			
+			private String codice;
+			
+			/**
+			 * @return the email
+			 */
+			@DynamoDBAttribute(attributeName="codice")
+			public String getCodice() {
+				return codice;
+			}
+			/**
+			 * @param email the email to set
+			 */
+			public void setCodice(String codice) {
+				this.codice = codice;
+			}
+			
+		}
 }
