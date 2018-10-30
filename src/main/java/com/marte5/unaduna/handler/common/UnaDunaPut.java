@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
+import com.marte5.unaduna.handler.put.UnaDunaPutOrdine;
 import com.marte5.unaduna.model.objects.Esito;
 import com.marte5.unaduna.utility.EsitoHelper;
 import com.marte5.unaduna.utility.FunzioniUtils;
@@ -23,15 +24,14 @@ public class UnaDunaPut implements RequestHandler<RichiestaPutGenerica, Risposta
 	
     @Override
     public RispostaPutGenerica handleRequest(RichiestaPutGenerica input, Context context) {
-    	    String className = this.getClass().getName();
+    	String className = this.getClass().getName();
         context.getLogger().log("Input: " + input);
         RispostaPutGenerica risposta = new RispostaPutGenerica();
-
         String functionName = input.getFunctionName();
         Esito esito = FunzioniUtils.getEsitoPositivo(className);
         
         if(!isFunctionNameValid(functionName)) {
-        		esito.setCodice(EsitoHelper.ESITO_KO_CODICE_ERRORE_GET);
+        	esito.setCodice(EsitoHelper.ESITO_KO_CODICE_ERRORE_GET);
 			esito.setMessage(EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_GET + " la funzione richiesta non esiste ");
 			risposta.setEsito(esito);
 			return risposta;

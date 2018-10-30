@@ -14,6 +14,8 @@ public class RichiestaGetGenerica {
 	private String codiceUtente;
 	private String emailUtente;
 	
+	private boolean ifCarrello;
+	
 	/**
 	 * @return the functionName
 	 */
@@ -99,4 +101,16 @@ public class RichiestaGetGenerica {
 		this.codiceOrdine = codiceOrdine;
 	}
 	
+	/**
+	 * @return the ifCarrello
+	 */
+	public boolean getIfCarrello() {
+		return ifCarrello;
+	}
+	/**
+	 * @param ifCarrello the ifCarrello to set
+	 */
+	public void setIfCarrello(boolean ifCarrello) {
+		this.ifCarrello = ifCarrello;
+	}
 }

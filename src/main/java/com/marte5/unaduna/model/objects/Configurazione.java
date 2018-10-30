@@ -13,6 +13,7 @@ public class Configurazione {
 	private String codice;
 	private String nome;
 	private String dedica;
+	private boolean carrello;
 	private List<Entita> elencoEntita;
 	private UtenteConfigurazione utente;
 	
@@ -65,7 +66,21 @@ public class Configurazione {
 	public void setDedica(String dedica) {
 		this.dedica = dedica;
 	}
+	
+	/**
+	 * @return the carrello
+	 */
+	@DynamoDBAttribute(attributeName="carrello")
+	public boolean getCarrello() {
+		return carrello;
+	}
 
+	/**
+	 * @param carrello the carrello to set
+	 */
+	public void setCarrello(boolean carrello) {
+		this.carrello = carrello;
+	}
 
 	/**
 	 * @return the elencoEntita

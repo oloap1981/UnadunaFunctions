@@ -43,7 +43,7 @@ public class UnaDunaPutConfigurazione implements RequestHandler<RichiestaPutGene
     			if(codiceConfigurazione == null || codiceConfigurazione.equals("")) {
         			//insert
     				codiceConfigurazione = FunzioniUtils.getEntitaId();
-	        } 
+    			} 
     			codiceConfigurazioneRisposta = codiceConfigurazione;
 	        	configurazione.setCodice(codiceConfigurazione);
     			

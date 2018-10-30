@@ -39,12 +39,11 @@ public class UnaDunaPutOrdine implements RequestHandler<RichiestaPutGenerica, Ri
     		if(client != null) {
     			DynamoDBMapper mapper = new DynamoDBMapper(client);
     			Ordine ordine = request.getOrdine();
-    			
     			String codiceOrdine = ordine.getCodice();
     			if(codiceOrdine == null || codiceOrdine.equals("")) {
         			//insert
     				codiceOrdine = FunzioniUtils.getEntitaId();
-	        } 
+    			} 
     			codiceOrdineRisposta = codiceOrdine;
 	        	ordine.setCodice(codiceOrdine);
     			

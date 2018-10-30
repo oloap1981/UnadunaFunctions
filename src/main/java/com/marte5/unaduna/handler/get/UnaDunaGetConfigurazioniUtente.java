@@ -27,8 +27,9 @@ public class UnaDunaGetConfigurazioniUtente implements RequestHandler<RichiestaG
     		Esito esito = FunzioniUtils.getEsitoPositivo(className);
     		List<Configurazione> configurazioniFiltrate = new ArrayList<Configurazione>();
     		String codiceUtente = request.getCodiceUtente();
+    		boolean ifCar = request.getIfCarrello(); 
     		
-    		if(codiceUtente == null || codiceUtente == "") {
+    		if(codiceUtente == null || codiceUtente == "" ) {
     			esito.setCodice(EsitoHelper.ESITO_KO_CODICE_ERRORE_GET);
     			esito.setMessage(className + " - " + EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_GET + " UnaDunaGetConfigurazioniUtente - codice utente non valorizzato per la richiesta ");
     			risposta.setEsito(esito);
@@ -49,6 +50,7 @@ public class UnaDunaGetConfigurazioniUtente implements RequestHandler<RichiestaG
     			DynamoDBMapper mapper = new DynamoDBMapper(client);
     			DynamoDBScanExpression expr = new DynamoDBScanExpression();
     			List<Configurazione> configurazioni;
+    			
     			try {
     				configurazioni = mapper.scan(Configurazione.class, expr);
     			} catch (Exception e) {
@@ -60,9 +62,9 @@ public class UnaDunaGetConfigurazioniUtente implements RequestHandler<RichiestaG
     			}
     			
     			for (Configurazione configurazione : configurazioni) {
-				if(configurazione.getUtente().getEmail().equals(codiceUtente)) {
-					configurazioniFiltrate.add(configurazione);
-				}
+					if(configurazione.getUtente().getEmail().equals(codiceUtente) && configurazione.getCarrello() == ifCar) {
+						configurazioniFiltrate.add(configurazione);
+					}
 			}
     			
     			risposta.setConfigurazioni(configurazioniFiltrate);
