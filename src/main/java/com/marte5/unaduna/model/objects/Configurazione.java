@@ -16,6 +16,7 @@ public class Configurazione {
 	private boolean carrello;
 	private List<Entita> elencoEntita;
 	private UtenteConfigurazione utente;
+	private String thumbnail;
 	
 	/**
 	 * @return the codice
@@ -114,6 +115,22 @@ public class Configurazione {
 		this.utente = utente;
 	}
 	
+	/**
+	 * @return the thumbnail
+	 */
+	@DynamoDBAttribute(attributeName="thumbnail")
+	public String getThumbnail() {
+		return thumbnail;
+	}
+
+
+	/**
+	 * @param thumbnail the thumbnail to set
+	 */
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
+	
 	@DynamoDBDocument
 	public static class Entita {
 		
@@ -124,6 +141,13 @@ public class Configurazione {
 		private String url;
 		private long prezzo;
 		private String tipoEntita;
+		private int ordine;
+		private String urlStripe;
+		private String nomeStile;
+		private String nomeBorchia;
+		private String colore;
+		private String metallo;
+		private List<String> accessori;
 		
 		/**
 		 * @return the codice
@@ -206,6 +230,7 @@ public class Configurazione {
 		/**
 		 * @return the tipoEntita
 		 */
+		@DynamoDBAttribute(attributeName="tipoEntita")
 		public String getTipoEntita() {
 			return tipoEntita;
 		}
@@ -214,6 +239,97 @@ public class Configurazione {
 		 */
 		public void setTipoEntita(String tipoEntita) {
 			this.tipoEntita = tipoEntita;
+		}
+		/**
+		 * @return the ordine
+		 */
+		@DynamoDBAttribute(attributeName="ordine")
+		public int getOrdine() {
+			return ordine;
+		}
+		/**
+		 * @param ordine the ordine to set
+		 */
+		public void setOrdine(int ordine) {
+			this.ordine = ordine;
+		}
+		/**
+		 * @return the urlStripe
+		 */
+		@DynamoDBAttribute(attributeName="urlStripe")
+		public String getUrlStripe() {
+			return urlStripe;
+		}
+		/**
+		 * @param urlStripe the urlStripe to set
+		 */
+		public void setUrlStripe(String urlStripe) {
+			this.urlStripe = urlStripe;
+		}
+		/**
+		 * @return the nomeStile
+		 */
+		@DynamoDBAttribute(attributeName="nomeStile")
+		public String getNomeStile() {
+			return nomeStile;
+		}
+		/**
+		 * @param nomeStile the nomeStile to set
+		 */
+		public void setNomeStile(String nomeStile) {
+			this.nomeStile = nomeStile;
+		}
+		/**
+		 * @return the nomeBorchia
+		 */
+		@DynamoDBAttribute(attributeName="nomeBorchia")
+		public String getNomeBorchia() {
+			return nomeBorchia;
+		}
+		/**
+		 * @param nomeBorchia the nomeBorchia to set
+		 */
+		public void setNomeBorchia(String nomeBorchia) {
+			this.nomeBorchia = nomeBorchia;
+		}
+		/**
+		 * @return the colore
+		 */
+		@DynamoDBAttribute(attributeName="colore")
+		public String getColore() {
+			return colore;
+		}
+		/**
+		 * @param colore the colore to set
+		 */
+		public void setColore(String colore) {
+			this.colore = colore;
+		}
+		/**
+		 * @return the metallo
+		 */
+		@DynamoDBAttribute(attributeName="metallo")
+		public String getMetallo() {
+			return metallo;
+		}
+		/**
+		 * @param metallo the metallo to set
+		 */
+		public void setMetallo(String metallo) {
+			this.metallo = metallo;
+		}
+		/**
+		 * @return the accessori
+		 */
+		@DynamoDBAttribute(attributeName="accessori")
+		public List<String> getAccessori() {
+			return accessori;
+		}
+		/**
+		 * @param accessori the accessori to set
+		 */
+		public void setAccessori(List<String> accessori) {
+			this.accessori = accessori;
 		}
 	}
 
@@ -237,6 +353,10 @@ public class Configurazione {
 			}
 			
 		}
+
+
+
+	
 
 
 }

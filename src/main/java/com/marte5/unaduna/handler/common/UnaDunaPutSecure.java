@@ -1,6 +1,7 @@
 package com.marte5.unaduna.handler.common;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import com.amazonaws.services.lambda.runtime.Context;
@@ -12,7 +13,7 @@ import com.marte5.unaduna.utility.FunzioniUtils;
 import requests.RichiestaPutGenerica;
 import responses.RispostaPutGenerica;
 
-public class UnaDunaPut implements RequestHandler<RichiestaPutGenerica, RispostaPutGenerica> {
+public class UnaDunaPutSecure implements RequestHandler<RichiestaPutGenerica, RispostaPutGenerica> {
 
 	private final static String FUNCTION_NAME_PUT_CONFIGURAZIONE = "UnaDunaPutConfigurazione";
 	private final static String FUNCTION_NAME_PUT_ORDINE = "UnaDunaPutOrdine";

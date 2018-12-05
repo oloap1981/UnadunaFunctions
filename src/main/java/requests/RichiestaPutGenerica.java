@@ -1,5 +1,7 @@
 package requests;
 
+import java.util.List;
+
 import com.marte5.unaduna.model.objects.Configurazione;
 import com.marte5.unaduna.model.objects.Ordine;
 import com.marte5.unaduna.model.objects.Utente;
@@ -10,6 +12,7 @@ public class RichiestaPutGenerica {
 	private Configurazione configurazione;
 	private Ordine ordine;
 	private Utente utente;
+	private List<String> codiciConfigurazioni;
 	
 	/**
 	 * @return the functionName
@@ -59,6 +62,18 @@ public class RichiestaPutGenerica {
 	 */
 	public void setUtente(Utente utente) {
 		this.utente = utente;
+	}
+	/**
+	 * @return the codiciConfigurazioni
+	 */
+	public List<String> getCodiciConfigurazioni() {
+		return codiciConfigurazioni;
+	}
+	/**
+	 * @param codiciConfigurazioni the codiciConfigurazioni to set
+	 */
+	public void setCodiciConfigurazioni(List<String> codiciConfigurazioni) {
+		this.codiciConfigurazioni = codiciConfigurazioni;
 	}
 	
 }

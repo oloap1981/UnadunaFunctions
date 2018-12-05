@@ -1,9 +1,10 @@
 package com.marte5.unaduna.model.objects;
 
+import java.util.List;
+
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIgnore;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
 @DynamoDBTable(tableName="UNADUNA_Ordini")
@@ -16,11 +17,12 @@ public class Ordine {
 	public static final int STATO_ORDINE_CHIUSO = 4;
 	
 	private String codice; 
+	private float costo;
+	private float costiSpedizione;
 	private int stato;
 	private boolean pagato;
 	private UtenteOrdine utente;
-	private ConfigurazioneOrdine configurazioneOrdine;
-	private Configurazione configurazione; 
+	private List<Configurazione> configurazioni; 
 	
 	/**
 	 * @return the codice
@@ -77,26 +79,42 @@ public class Ordine {
 	/**
 	 * @return the configurazione
 	 */
-	@DynamoDBAttribute(attributeName="configurazione")
-	public ConfigurazioneOrdine getConfigurazioneOrdine() {
-		return configurazioneOrdine;
+	@DynamoDBAttribute(attributeName="configurazioni")
+	public List<Configurazione> getConfigurazioni() {
+		return configurazioni;
 	}
 	/**
 	 * @param configurazione the configurazione to set
 	 */
-	public void setConfigurazioneOrdine(ConfigurazioneOrdine configurazioneOrdine) {
-		this.configurazioneOrdine = configurazioneOrdine;
+	public void setConfigurazioni(List<Configurazione> configurazioni) {
+		this.configurazioni = configurazioni;
 	}
 	
-	@DynamoDBIgnore
-	public Configurazione getConfigurazione() {
-		return configurazione;
+	/**
+	 * @return the costo
+	 */
+	@DynamoDBAttribute(attributeName="costo")
+	public float getCosto() {
+		return costo;
 	}
 	/**
-	 * @param configurazione the configurazione to set
+	 * @param costo the costo to set
 	 */
-	public void setConfigurazione(Configurazione configurazione) {
-		this.configurazione = configurazione;
+	public void setCosto(float costo) {
+		this.costo = costo;
+	}
+	/**
+	 * @return the costiSpedizione
+	 */
+	@DynamoDBAttribute(attributeName="costiSpedizione")
+	public float getCostiSpedizione() {
+		return costiSpedizione;
+	}
+	/**
+	 * @param costiSpedizione the costiSpedizione to set
+	 */
+	public void setCostiSpedizione(float costiSpedizione) {
+		this.costiSpedizione = costiSpedizione;
 	}
 	
 	
@@ -121,24 +139,5 @@ public class Ordine {
 			
 		}
 	
-	@DynamoDBDocument
-	public static class ConfigurazioneOrdine {
-			
-			private String codice;
-			
-			/**
-			 * @return the email
-			 */
-			@DynamoDBAttribute(attributeName="codice")
-			public String getCodice() {
-				return codice;
-			}
-			/**
-			 * @param email the email to set
-			 */
-			public void setCodice(String codice) {
-				this.codice = codice;
-			}
-			
-		}
+
 }

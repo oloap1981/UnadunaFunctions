@@ -27,7 +27,7 @@ public class UnaDunaGetConfigurazioniUtente implements RequestHandler<RichiestaG
     		Esito esito = FunzioniUtils.getEsitoPositivo(className);
     		List<Configurazione> configurazioniFiltrate = new ArrayList<Configurazione>();
     		String codiceUtente = request.getCodiceUtente();
-    		boolean ifCar = request.getIfCarrello(); 
+    		//boolean ifCar = request.getIfCarrello(); 
     		
     		if(codiceUtente == null || codiceUtente == "" ) {
     			esito.setCodice(EsitoHelper.ESITO_KO_CODICE_ERRORE_GET);
@@ -62,10 +62,14 @@ public class UnaDunaGetConfigurazioniUtente implements RequestHandler<RichiestaG
     			}
     			
     			for (Configurazione configurazione : configurazioni) {
-					if(configurazione.getUtente().getEmail().equals(codiceUtente) && configurazione.getCarrello() == ifCar) {
-						configurazioniFiltrate.add(configurazione);
-					}
-			}
+    				if(configurazione.getUtente() != null) {
+    					if(configurazione.getUtente().getEmail() != null) {
+    						if(configurazione.getUtente().getEmail().equals(codiceUtente)) {
+    							configurazioniFiltrate.add(configurazione);
+    						}
+    					}
+    				}
+    			}
     			
     			risposta.setConfigurazioni(configurazioniFiltrate);
     		}	
