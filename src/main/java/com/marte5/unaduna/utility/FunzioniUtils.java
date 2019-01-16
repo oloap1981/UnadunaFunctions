@@ -8,6 +8,8 @@ import com.marte5.unaduna.model.objects.Esito;
 
 public class FunzioniUtils {
 	
+	public static final String AMAZON_S3_BASE_URL = "https://s3.eu-central-1.amazonaws.com/";
+	
 	/***
 	 * 
 	 * @return
