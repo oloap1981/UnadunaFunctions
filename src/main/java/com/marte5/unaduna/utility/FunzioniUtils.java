@@ -33,4 +33,9 @@ public class FunzioniUtils {
 		Date actualDate = new Date();
         return actualDate.getTime()  +"";
 	}
+	
+	public static long getEntitaIdLong() {
+		Date actualDate = new Date();
+        return actualDate.getTime();
+	}
 }

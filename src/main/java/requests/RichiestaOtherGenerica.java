@@ -2,6 +2,8 @@ package requests;
 
 import java.util.List;
 
+import com.marte5.unaduna.model.objects.LogElement;
+
 public class RichiestaOtherGenerica {
 	
 	private String functionName;
@@ -13,6 +15,7 @@ public class RichiestaOtherGenerica {
 	private String emailSubject;
 	private String base64Image; 
 	private String filename;
+	private LogElement logElement;
 	
 	/**
 	 * @return the emailMessage
@@ -98,7 +101,18 @@ public class RichiestaOtherGenerica {
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
-	
+	/**
+	 * @return the logElement
+	 */
+	public LogElement getLogElement() {
+		return logElement;
+	}
+	/**
+	 * @param logElement the logElement to set
+	 */
+	public void setLogElement(LogElement logElement) {
+		this.logElement = logElement;
+	}
 	
 	
 }

@@ -21,7 +21,7 @@ import com.marte5.unaduna.utility.SmtpAuthenticator;
 import requests.RichiestaOtherGenerica;
 import responses.RispostaOtherGenerica;
 
-public class UnaDunaSendMail implements RequestHandler<RichiestaOtherGenerica, RispostaOtherGenerica> {
+public class UnaDunaSendMailGmail implements RequestHandler<RichiestaOtherGenerica, RispostaOtherGenerica> {
 
 	@Override
 	public RispostaOtherGenerica handleRequest(RichiestaOtherGenerica request, Context context) {
@@ -68,19 +68,15 @@ public class UnaDunaSendMail implements RequestHandler<RichiestaOtherGenerica, R
 		// Get system properties
 		Properties properties = System.getProperties();
 
-		properties.put("mail.smtp.host", "email-smtp.eu-west-1.amazonaws.com");
-		properties.put("mail.smtp.port", "587");
-		properties.put("mail.smtp.auth", "true");
+		properties.put("mail.smtp.host", "true");
 		properties.put("mail.smtp.starttls.enable", "true");
-		//properties.put("mail.smtp.ssl.enable", "true");
-
-		// Get the default Session object.
-//		SmtpAuthenticator authenticator = new SmtpAuthenticator();
-//		Session session = Session.getDefaultInstance(properties, authenticator);
-
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.auth", "true");
+        
 		try {
 			// Create a default MimeMessage object.
-			SmtpAuthenticator auth = new SmtpAuthenticator(Constants.MAIL_ALIAS_USER, Constants.MAIL_ALIAS_PASSWORD);
+			SmtpAuthenticator auth = new SmtpAuthenticator(Constants.MAIL_USER_GOOGLE, Constants.MAIL_PASSWORD_GOOGLE);
 			Session session = Session.getInstance(properties, auth);
 			
 			MimeMessage message = new MimeMessage(session);
@@ -95,12 +91,14 @@ public class UnaDunaSendMail implements RequestHandler<RichiestaOtherGenerica, R
 			// Send the actual HTML message, as big as you like
 			message.setContent(mailMessage, "text/html");
 
-			Transport transport = session.getTransport("smtps");
-			transport.connect("email-smtp.eu-west-1.amazonaws.com", Constants.MAIL_ALIAS_USER, Constants.MAIL_ALIAS_PASSWORD);
+			Transport transport = session.getTransport("smtp");
+			
+			transport.connect("smtp.gmail.com", Constants.MAIL_USER_GOOGLE, Constants.MAIL_PASSWORD_GOOGLE);
 
 			message.setFrom("orders@annacloud.it");
 			// Send message
 			Transport.send(message);
+			
 		} catch (MessagingException mex) {
 			mex.printStackTrace();
 		}

@@ -3,6 +3,7 @@ package requests;
 import java.util.List;
 
 import com.marte5.unaduna.model.objects.Configurazione;
+import com.marte5.unaduna.model.objects.LogElement;
 import com.marte5.unaduna.model.objects.Ordine;
 import com.marte5.unaduna.model.objects.Utente;
 
@@ -75,5 +76,6 @@ public class RichiestaPutGenerica {
 	public void setCodiciConfigurazioni(List<String> codiciConfigurazioni) {
 		this.codiciConfigurazioni = codiciConfigurazioni;
 	}
+	
 	
 }

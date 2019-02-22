@@ -16,7 +16,9 @@ public class UnaDunaOtherService implements RequestHandler<RichiestaOtherGeneric
 
 
 	private final static String FUNCTION_NAME_SENDMAIL = "UnaDunaSendMail";
+	private final static String FUNCTION_NAME_SENDMAIL_GMAIL = "UnaDunaSendMailGmail";
 	private final static String FUNCTION_NAME_SAVEIMAGE = "UnaDunaSaveImage";
+	private final static String FUNCTION_NAME_SAVELOG = "UnaDunaPutLogEvento";
 	
 	private static final String PACKAGE_NAME_GET = "com.marte5.unaduna.handler.other.";
 	
@@ -56,7 +58,9 @@ public class UnaDunaOtherService implements RequestHandler<RichiestaOtherGeneric
     		List<String> funzioni = new ArrayList<>();
     		
     		funzioni.add(FUNCTION_NAME_SENDMAIL);
+    		funzioni.add(FUNCTION_NAME_SENDMAIL_GMAIL);
     		funzioni.add(FUNCTION_NAME_SAVEIMAGE);
+    		funzioni.add(FUNCTION_NAME_SAVELOG);
     		return funzioni.contains(nomeFunzione);
     }
 }

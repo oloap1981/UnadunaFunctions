@@ -9,6 +9,9 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
 @DynamoDBTable(tableName="UNADUNA_Configurazioni")
 public class Configurazione {
+	
+	public static final String CONFIGURAZIONE_TIPO_NORMALE = "N";
+	public static final String CONFIGURAZIONE_TIPO_PRECONFIG = "P";
 
 	private String codice;
 	private String nome;
@@ -17,6 +20,7 @@ public class Configurazione {
 	private List<Entita> elencoEntita;
 	private UtenteConfigurazione utente;
 	private String thumbnail;
+	private String tipo;
 	
 	/**
 	 * @return the codice
@@ -129,6 +133,20 @@ public class Configurazione {
 	 */
 	public void setThumbnail(String thumbnail) {
 		this.thumbnail = thumbnail;
+	}
+	
+	/**
+	 * @return the tipo
+	 */
+	@DynamoDBAttribute(attributeName="tipo")
+	public String getTipo() {
+		return tipo;
+	}
+	/**
+	 * @param tipo the tipo to set
+	 */
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 	
 	@DynamoDBDocument
@@ -353,10 +371,4 @@ public class Configurazione {
 			}
 			
 		}
-
-
-
-	
-
-
 }
