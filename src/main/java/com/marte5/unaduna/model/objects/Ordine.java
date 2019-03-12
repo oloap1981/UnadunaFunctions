@@ -21,6 +21,7 @@ public class Ordine {
 	private float costiSpedizione;
 	private int stato;
 	private boolean pagato;
+	private String email; 
 	private UtenteOrdine utente;
 	private List<Configurazione> configurazioni; 
 	
@@ -117,6 +118,19 @@ public class Ordine {
 		this.costiSpedizione = costiSpedizione;
 	}
 	
+	/**
+	 * @return the email
+	 */
+	@DynamoDBAttribute(attributeName="email")
+	public String getEmail() {
+		return email;
+	}
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	
 	@DynamoDBDocument
 	public static class UtenteOrdine {
@@ -138,6 +152,9 @@ public class Ordine {
 			}
 			
 		}
+
+
+
 	
 
 }

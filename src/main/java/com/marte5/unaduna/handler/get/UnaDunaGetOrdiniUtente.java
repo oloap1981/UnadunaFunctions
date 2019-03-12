@@ -7,6 +7,9 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
+import com.amazonaws.services.dynamodbv2.model.AttributeValue;
+import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
+import com.amazonaws.services.dynamodbv2.model.Condition;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.marte5.unaduna.model.objects.Esito;
@@ -25,10 +28,9 @@ public class UnaDunaGetOrdiniUtente implements RequestHandler<RichiestaGetGeneri
     		String className = this.getClass().getName();
     		RispostaGetGenerica risposta = new RispostaGetGenerica();
     		Esito esito = FunzioniUtils.getEsitoPositivo(className);
-    		List<Ordine> ordiniFiltrati = new ArrayList<Ordine>();
-    		String codiceUtente = request.getCodiceUtente();
+    		String emailUtente = request.getEmailUtente(); 
     		
-    		if(codiceUtente == null || codiceUtente == "") {
+    		if(emailUtente == null || emailUtente == "") {
     			esito.setCodice(EsitoHelper.ESITO_KO_CODICE_ERRORE_GET);
     			esito.setMessage(className + " - " + EsitoHelper.ESITO_KO_MESSAGGIO_ERRORE_GET + " UnaDunaGetConfigurazioniUtente - codice utente non valorizzato per la richiesta ");
     			risposta.setEsito(esito);
@@ -48,6 +50,12 @@ public class UnaDunaGetOrdiniUtente implements RequestHandler<RichiestaGetGeneri
     		if(client != null) {
     			DynamoDBMapper mapper = new DynamoDBMapper(client);
     			DynamoDBScanExpression expr = new DynamoDBScanExpression();
+    			
+				ArrayList<AttributeValue> attributi = new ArrayList<AttributeValue>();
+    			AttributeValue attributo = new AttributeValue(emailUtente);
+    			attributi.add(attributo);
+    			expr.addFilterCondition("email", new Condition().withComparisonOperator(ComparisonOperator.CONTAINS).withAttributeValueList(attributi));
+    			
     			List<Ordine> ordini;
     			try {
     				ordini = mapper.scan(Ordine.class, expr);
@@ -58,16 +66,9 @@ public class UnaDunaGetOrdiniUtente implements RequestHandler<RichiestaGetGeneri
     				risposta.setEsito(esito);
     				return risposta;
     			}
+    			risposta.setOrdini(ordini);
     			
-    			for (Ordine ordine : ordini) {
-				if(ordine.getUtente().getEmail().equals(codiceUtente)) {
-					ordiniFiltrati.add(ordine);
-				}
 			}
-    			
-    			risposta.setOrdini(ordiniFiltrati);
-    		}	
-    		
     		risposta.setEsito(esito);
     		return risposta;
     }
