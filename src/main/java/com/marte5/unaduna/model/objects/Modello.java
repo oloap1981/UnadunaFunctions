@@ -15,10 +15,14 @@ public class Modello {
 	private String urlStripeHD;
 	private String urlThumbnail;
 	private String urlThumbnailHD;
-	private long prezzo;
+	private float prezzo;
+	private float prezzoPieno;
+	private boolean scontato;
 	private List<String> accessori;
 	private int ordine;
 	private int ordineInterfaccia;
+	private String accessorioInizialeSelezionato; 
+	private boolean attivo;
 
 	/**
 	 * @return the codice
@@ -102,13 +106,13 @@ public class Modello {
 	 * @return the prezzo
 	 */
 	@DynamoDBAttribute(attributeName="prezzo")
-	public long getPrezzo() {
+	public float getPrezzo() {
 		return prezzo;
 	}
 	/**
 	 * @param prezzo the prezzo to set
 	 */
-	public void setPrezzo(long prezzo) {
+	public void setPrezzo(float prezzo) {
 		this.prezzo = prezzo;
 	}
 	/**
@@ -149,5 +153,47 @@ public class Modello {
 	 */
 	public void setOrdineInterfaccia(int ordineInterfaccia) {
 		this.ordineInterfaccia = ordineInterfaccia;
+	}
+	
+	@DynamoDBAttribute(attributeName="accessorioInizialeSelezionato")
+	public String getAccessorioInizialeSelezionato() {
+		return accessorioInizialeSelezionato;
+	}
+	public void setAccessorioInizialeSelezionato(String accessorioInizialeSelezionato) {
+		this.accessorioInizialeSelezionato = accessorioInizialeSelezionato;
+	}
+	
+	@DynamoDBAttribute(attributeName="attivo")
+	public boolean getAttivo() {
+		return attivo;
+	}
+	public void setAttivo(boolean attivo) {
+		this.attivo = attivo;
+	}
+	/**
+	 * @return the scontato
+	 */
+	@DynamoDBAttribute(attributeName="scontato")
+	public boolean getScontato() {
+		return scontato;
+	}
+	/**
+	 * @param scontato the scontato to set
+	 */
+	public void setScontato(boolean scontato) {
+		this.scontato = scontato;
+	}
+	/**
+	 * @return the prezzoPieno
+	 */
+	@DynamoDBAttribute(attributeName="prezzoPieno")
+	public float getPrezzoPieno() {
+		return prezzoPieno;
+	}
+	/**
+	 * @param prezzoPieno the prezzoPieno to set
+	 */
+	public void setPrezzoPieno(float prezzoPieno) {
+		this.prezzoPieno = prezzoPieno;
 	}
 }

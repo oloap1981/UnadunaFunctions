@@ -1,5 +1,6 @@
 package com.marte5.unaduna.handler.get;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;

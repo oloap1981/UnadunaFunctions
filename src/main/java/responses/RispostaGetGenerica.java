@@ -3,6 +3,7 @@ package responses;
 import java.util.List;
 
 import com.marte5.unaduna.model.objects.Accessorio;
+import com.marte5.unaduna.model.objects.Chiave;
 import com.marte5.unaduna.model.objects.Configurazione;
 import com.marte5.unaduna.model.objects.Esito;
 import com.marte5.unaduna.model.objects.Modello;
@@ -19,6 +20,7 @@ public class RispostaGetGenerica {
 	private Configurazione configurazione;
 	private Ordine ordine;
 	private Utente utente;
+	private Chiave chiave;
 	
 	/**
 	 * @return the esito
@@ -115,6 +117,18 @@ public class RispostaGetGenerica {
 	 */
 	public void setOrdine(Ordine ordine) {
 		this.ordine = ordine;
+	}
+	/**
+	 * @return the chiave
+	 */
+	public Chiave getChiave() {
+		return chiave;
+	}
+	/**
+	 * @param chiave the chiave to set
+	 */
+	public void setChiave(Chiave chiave) {
+		this.chiave = chiave;
 	}
 	
 	

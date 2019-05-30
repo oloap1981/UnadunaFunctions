@@ -21,6 +21,8 @@ public class Configurazione {
 	private UtenteConfigurazione utente;
 	private String thumbnail;
 	private String tipo;
+	private int ordineInterfaccia; 
+	private String urlImmagineInfluencer;
 	
 	/**
 	 * @return the codice
@@ -371,4 +373,37 @@ public class Configurazione {
 			}
 			
 		}
+
+	/**
+	 * @return the ordineInterfaccia
+	 */
+	@DynamoDBAttribute(attributeName="ordineInterfaccia")
+	public int getOrdineInterfaccia() {
+		return ordineInterfaccia;
+	}
+
+
+	/**
+	 * @param ordineInterfaccia the ordineInterfaccia to set
+	 */
+	public void setOrdineInterfaccia(int ordineInterfaccia) {
+		this.ordineInterfaccia = ordineInterfaccia;
+	}
+
+
+	/**
+	 * @return the urlImmagineInfluencer
+	 */
+	@DynamoDBAttribute(attributeName="urlImmagineInfluencer")
+	public String getUrlImmagineInfluencer() {
+		return urlImmagineInfluencer;
+	}
+
+
+	/**
+	 * @param urlImmagineInfluencer the urlImmagineInfluencer to set
+	 */
+	public void setUrlImmagineInfluencer(String urlImmagineInfluencer) {
+		this.urlImmagineInfluencer = urlImmagineInfluencer;
+	}
 }
