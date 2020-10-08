@@ -6,6 +6,9 @@ public class RichiestaDeleteGenerica {
 	private String codiceConfigurazione;
 	private String codiceOrdine;
 	
+	private String codiceCodiceSconto;
+	private String idCodiceSconto;
+	
 	/**
 	 * @return the functionName
 	 */
@@ -43,5 +46,17 @@ public class RichiestaDeleteGenerica {
 	 */
 	public void setCodiceConfigurazione(String codiceConfigurazione) {
 		this.codiceConfigurazione = codiceConfigurazione;
+	}
+	public String getCodiceCodiceSconto() {
+		return codiceCodiceSconto;
+	}
+	public void setCodiceCodiceSconto(String codiceCodiceSconto) {
+		this.codiceCodiceSconto = codiceCodiceSconto;
+	}
+	public String getIdCodiceSconto() {
+		return idCodiceSconto;
+	}
+	public void setIdCodiceSconto(String idCodiceSconto) {
+		this.idCodiceSconto = idCodiceSconto;
 	}
 }

@@ -12,6 +12,8 @@ public class Configurazione {
 	
 	public static final String CONFIGURAZIONE_TIPO_NORMALE = "N";
 	public static final String CONFIGURAZIONE_TIPO_PRECONFIG = "P";
+	public static final String CONFIGURAZIONE_TIPO_SHOPPING = "S";
+	public static final String CONFIGURAZIONE_TIPO_SHOPPING_CLIENT = "SC";
 
 	private String codice;
 	private String nome;
@@ -23,6 +25,12 @@ public class Configurazione {
 	private String tipo;
 	private int ordineInterfaccia; 
 	private String urlImmagineInfluencer;
+	private String descrizione;
+	private float prezzo;
+	private float prezzoScontato;
+	private String info;
+	private String descrizioneBreve;
+	private String taglia;
 	
 	/**
 	 * @return the codice
@@ -151,6 +159,21 @@ public class Configurazione {
 		this.tipo = tipo;
 	}
 	
+	/**
+	 * @return the taglia
+	 */
+	@DynamoDBAttribute(attributeName="taglia")
+	public String getTaglia() {
+		return taglia;
+	}
+
+	/**
+	 * @param nome the nome to set
+	 */
+	public void setTaglia(String taglia) {
+		this.taglia = taglia;
+	}
+	
 	@DynamoDBDocument
 	public static class Entita {
 		
@@ -160,6 +183,7 @@ public class Configurazione {
 		private String categoria;
 		private String url;
 		private long prezzo;
+		private long prezzoPieno;
 		private String tipoEntita;
 		private int ordine;
 		private String urlStripe;
@@ -351,6 +375,19 @@ public class Configurazione {
 		public void setAccessori(List<String> accessori) {
 			this.accessori = accessori;
 		}
+		/**
+		 * @return the prezzoPieno
+		 */
+		@DynamoDBAttribute(attributeName="prezzoPieno")
+		public long getPrezzoPieno() {
+			return prezzoPieno;
+		}
+		/**
+		 * @param prezzoPieno the prezzoPieno to set
+		 */
+		public void setPrezzoPieno(long prezzoPieno) {
+			this.prezzoPieno = prezzoPieno;
+		}
 	}
 
 	@DynamoDBDocument
@@ -406,4 +443,88 @@ public class Configurazione {
 	public void setUrlImmagineInfluencer(String urlImmagineInfluencer) {
 		this.urlImmagineInfluencer = urlImmagineInfluencer;
 	}
+	
+	/**
+	 * @return the descrizione
+	 */
+	@DynamoDBAttribute(attributeName="descrizione")
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+
+	/**
+	 * @param urlImmagineInfluencer the urlImmagineInfluencer to set
+	 */
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
+	
+	/**
+	 * @return the prezzo
+	 */
+	@DynamoDBAttribute(attributeName="prezzo")
+	public float getPrezzo() {
+		return prezzo;
+	}
+
+
+	/**
+	 * @param urlImmagineInfluencer the urlImmagineInfluencer to set
+	 */
+	public void setPrezzo(float prezzo) {
+		this.prezzo = prezzo;
+	}
+	
+	/**
+	 * @return the prezzoScontato
+	 */
+	@DynamoDBAttribute(attributeName="prezzoScontato")
+	public float getPrezzoScontato() {
+		return prezzoScontato;
+	}
+
+
+	/**
+	 * @param urlImmagineInfluencer the urlImmagineInfluencer to set
+	 */
+	public void setPrezzoScontato(float prezzoScontato) {
+		this.prezzoScontato = prezzoScontato;
+	}
+
+
+	/**
+	 * @return the info
+	 */
+	@DynamoDBAttribute(attributeName="info")
+	public String getInfo() {
+		return info;
+	}
+
+
+	/**
+	 * @param info the info to set
+	 */
+	public void setInfo(String info) {
+		this.info = info;
+	}
+
+
+	/**
+	 * @return the descrizioneBreve
+	 */
+	@DynamoDBAttribute(attributeName="descrizioneBreve")
+	public String getDescrizioneBreve() {
+		return descrizioneBreve;
+	}
+
+
+	/**
+	 * @param descrizioneBreve the descrizioneBreve to set
+	 */
+	public void setDescrizioneBreve(String descrizioneBreve) {
+		this.descrizioneBreve = descrizioneBreve;
+	}
+	
+	
 }

@@ -19,6 +19,8 @@ public class UnaDunaPutSecure implements RequestHandler<RichiestaPutGenerica, Ri
 	private final static String FUNCTION_NAME_PUT_ORDINE = "UnaDunaPutOrdine";
 	private final static String FUNCTION_NAME_PUT_UTENTE = "UnaDunaPutUtente";
 	private final static String FUNCTION_NAME_SVUOTA_CARRELLO = "UnaDunaSvuotaCarrello";
+	private final static String FUNCTION_NAME_CREACODICESCONTO = "UnaDunaCreaCodiceSconto";
+	private final static String FUNCTION_NAME_CONSUMACODICESCONTO = "UnaDunaConsumaCodiceSconto";
 	private static final String PACKAGE_NAME_PUT = "com.marte5.unaduna.handler.put.";
 	
     @Override
@@ -59,6 +61,8 @@ public class UnaDunaPutSecure implements RequestHandler<RichiestaPutGenerica, Ri
     		funzioni.add(FUNCTION_NAME_PUT_ORDINE);
     		funzioni.add(FUNCTION_NAME_PUT_UTENTE);
     		funzioni.add(FUNCTION_NAME_SVUOTA_CARRELLO);
+    		funzioni.add(FUNCTION_NAME_CREACODICESCONTO);
+    		funzioni.add(FUNCTION_NAME_CONSUMACODICESCONTO);
     		
     		return funzioni.contains(nomeFunzione);
     }

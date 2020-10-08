@@ -17,6 +17,7 @@ public class UnaDunaDelete implements RequestHandler<RichiestaDeleteGenerica, Ri
 	private final static String FUNCTION_NAME_DELETE_CONFIGURAZIONE = "UnaDunaDeleteConfigurazione";
 	private final static String FUNCTION_NAME_DELETE_ORDINE = "UnaDunaDeleteOrdine";
 	private final static String FUNCTION_NAME_DELETE_UTENTE = "UnaDunaDeleteUtente";
+	private final static String FUNCTION_NAME_DELETE_CODICESCONTO = "UnaDunaDeleteCodiceSconto";
 	private static final String PACKAGE_NAME_DELETE = "com.marte5.unaduna.handler.delete.";
 	
     @Override
@@ -57,6 +58,7 @@ public class UnaDunaDelete implements RequestHandler<RichiestaDeleteGenerica, Ri
     		funzioni.add(FUNCTION_NAME_DELETE_CONFIGURAZIONE);
     		funzioni.add(FUNCTION_NAME_DELETE_ORDINE);
     		funzioni.add(FUNCTION_NAME_DELETE_UTENTE);
+    		funzioni.add(FUNCTION_NAME_DELETE_CODICESCONTO);
     		return funzioni.contains(nomeFunzione);
     }
 }

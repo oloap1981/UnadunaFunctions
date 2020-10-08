@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.marte5.unaduna.model.objects.Accessorio;
 import com.marte5.unaduna.model.objects.Chiave;
+import com.marte5.unaduna.model.objects.CodiceSconto;
 import com.marte5.unaduna.model.objects.Configurazione;
 import com.marte5.unaduna.model.objects.Esito;
 import com.marte5.unaduna.model.objects.Modello;
@@ -17,6 +18,8 @@ public class RispostaGetGenerica {
 	private List<Accessorio> accessori;
 	private List<Configurazione> configurazioni;
 	private List<Ordine> ordini;
+	private List<CodiceSconto> codiciSconto;
+	private CodiceSconto codiceSconto;
 	private Configurazione configurazione;
 	private Ordine ordine;
 	private Utente utente;
@@ -129,6 +132,18 @@ public class RispostaGetGenerica {
 	 */
 	public void setChiave(Chiave chiave) {
 		this.chiave = chiave;
+	}
+	public List<CodiceSconto> getCodiciSconto() {
+		return codiciSconto;
+	}
+	public void setCodiciSconto(List<CodiceSconto> codiciSconto) {
+		this.codiciSconto = codiciSconto;
+	}
+	public CodiceSconto getCodiceSconto() {
+		return codiceSconto;
+	}
+	public void setCodiceSconto(CodiceSconto codiceSconto) {
+		this.codiceSconto = codiceSconto;
 	}
 	
 	

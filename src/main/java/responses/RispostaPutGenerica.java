@@ -8,6 +8,9 @@ public class RispostaPutGenerica {
 	private String codiceConfigurazioneRisposta;
 	private String codiceOrdineRisposta;
 	private String codiceUtenteRisposta;
+	private String codiceScontoRisposta;
+	private String idCodiceScontoRisposta;
+	private int percentualeCodiceSconto;
 	
 	/**
 	 * @return the esito
@@ -56,6 +59,24 @@ public class RispostaPutGenerica {
 	 */
 	public void setCodiceUtenteRisposta(String codiceUtenteRisposta) {
 		this.codiceUtenteRisposta = codiceUtenteRisposta;
+	}
+	public String getCodiceScontoRisposta() {
+		return codiceScontoRisposta;
+	}
+	public void setCodiceScontoRisposta(String codiceScontoRisposta) {
+		this.codiceScontoRisposta = codiceScontoRisposta;
+	}
+	public String getIdCodiceScontoRisposta() {
+		return idCodiceScontoRisposta;
+	}
+	public void setIdCodiceScontoRisposta(String idCodiceScontoRisposta) {
+		this.idCodiceScontoRisposta = idCodiceScontoRisposta;
+	}
+	public int getPercentualeCodiceSconto() {
+		return percentualeCodiceSconto;
+	}
+	public void setPercentualeCodiceSconto(int percentualeCodiceSconto) {
+		this.percentualeCodiceSconto = percentualeCodiceSconto;
 	}
 	
 }

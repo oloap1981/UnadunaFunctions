@@ -23,6 +23,9 @@ public class UnaDunaGet implements RequestHandler<RichiestaGetGenerica, Risposta
 	private final static String FUNCTION_NAME_GET_ORDINI = "UnaDunaGetOrdini";
 	private final static String FUNCTION_NAME_GET_ORDINI_UTENTE = "UnaDunaGetOrdiniUtente";
 	private final static String FUNCTION_NAME_GET_CONFIGURAZIONI_PRECONFIGURATE = "UnaDunaGetConfigurazioniPreconfigurate";
+	private final static String FUNCTION_NAME_GET_CONFIGURAZIONI_SHOPPING = "UnaDunaGetConfigurazioniShopping";
+	private final static String FUNCTION_NAME_GET_CODICISCONTO = "UnaDunaGetCodiciSconto";
+	private final static String FUNCTION_NAME_GET_CODICESCONTO = "UnaDunaGetCodiceSconto";
 	
 	private static final String PACKAGE_NAME_GET = "com.marte5.unaduna.handler.get.";
 	
@@ -70,6 +73,9 @@ public class UnaDunaGet implements RequestHandler<RichiestaGetGenerica, Risposta
     		funzioni.add(FUNCTION_NAME_GET_ORDINI);
     		funzioni.add(FUNCTION_NAME_GET_ORDINI_UTENTE);
     		funzioni.add(FUNCTION_NAME_GET_CONFIGURAZIONI_PRECONFIGURATE);
+    		funzioni.add(FUNCTION_NAME_GET_CONFIGURAZIONI_SHOPPING);
+    		funzioni.add(FUNCTION_NAME_GET_CODICISCONTO);
+    		funzioni.add(FUNCTION_NAME_GET_CODICESCONTO);
     		
     		return funzioni.contains(nomeFunzione);
     }

@@ -16,6 +16,9 @@ public class RichiestaGetGenerica {
 	
 	private boolean ifCarrello;
 	
+	private String codiceCodiceSconto;
+	private String idCodiceSconto;
+	
 	/**
 	 * @return the functionName
 	 */
@@ -112,5 +115,17 @@ public class RichiestaGetGenerica {
 	 */
 	public void setIfCarrello(boolean ifCarrello) {
 		this.ifCarrello = ifCarrello;
+	}
+	public String getCodiceCodiceSconto() {
+		return codiceCodiceSconto;
+	}
+	public void setCodiceCodiceSconto(String codiceCodiceSconto) {
+		this.codiceCodiceSconto = codiceCodiceSconto;
+	}
+	public String getIdCodiceSconto() {
+		return idCodiceSconto;
+	}
+	public void setIdCodiceSconto(String idCodiceSconto) {
+		this.idCodiceSconto = idCodiceSconto;
 	}
 }

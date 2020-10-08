@@ -22,6 +22,7 @@ public class Ordine {
 	private int stato;
 	private boolean pagato;
 	private String email; 
+	private String codiceSconto;
 	private UtenteOrdine utente;
 	private List<Configurazione> configurazioni; 
 	
@@ -152,6 +153,20 @@ public class Ordine {
 			}
 			
 		}
+
+	/**
+	 * @return the codiceSconto
+	 */
+	@DynamoDBAttribute(attributeName="codiceSconto")
+	public String getCodiceSconto() {
+		return codiceSconto;
+	}
+	/**
+	 * @param codiceSconto the codiceSconto to set
+	 */
+	public void setCodiceSconto(String codiceSconto) {
+		this.codiceSconto = codiceSconto;
+	}
 
 
 
